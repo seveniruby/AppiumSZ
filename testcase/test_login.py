@@ -23,4 +23,8 @@ class TestLogin:
         pass
 
     def test_qq(self):
-        pass
+        assert "用户名或密码错误" in MainPage()\
+            .goto_profile()\
+            .goto_login_by_password()\
+            .login_by_password_fail("15600534700", "123456")\
+            .get_msg()
